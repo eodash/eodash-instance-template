@@ -1,0 +1,10 @@
+{
+  "name": "config-template",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "",
+  "dependencies": {
+    "eodash-v5": "github:EOX-A/eodash-v5#remodel"
+  },
+  "author": ""
+}
