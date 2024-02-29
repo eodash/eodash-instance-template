@@ -1,9 +1,10 @@
-//@ts-nocheck
 const stacStore = window.eodashStore?.stac?.useSTAcStore()
 let handleMoveEnd = null;
-const { mapInstance, currentUrl } = window?.eodashStore?.states
+const { mapInstance, currentUrl } = window?.eodashStore?.states ?? null
 
-
+/** 
+ * @type {import("eodash").EodashConfig}
+*/
 export default {
   id: 'template-id',
   stacEndpoint: 'https://eurodatacube.github.io/eodash-catalog/RACE/catalog.json',
@@ -49,7 +50,6 @@ export default {
             });
         },
         onUnmounted(_el, _store, _router) {
-          //@ts-expect-error
           mapInstance.value?.un('moveend', handleMoveEnd);
         }
       },
@@ -88,7 +88,7 @@ export default {
             }
           },
           onMounted: async function (el, store, _) {
-            el.apply(store?.stac);
+           /** @type {any} */ (el).apply(store?.stac);
           },
           tagName: 'eox-itemfilter'
         },
@@ -123,8 +123,8 @@ export default {
               },
               tagName: 'eox-map',
               onMounted(el, _, router) {
-                el.zoom = router.currentRoute.value.query['z']
-                mapInstance.value = el.map
+                /** @type {any} */ (el).zoom = router.currentRoute.value.query['z']
+                mapInstance.value = /** @type {any} */ (el).map
                 mapInstance.value?.on('moveend', handleMoveEnd = (evt) => {
                   router.push({
                     query: {
@@ -215,9 +215,6 @@ export default {
                       properties: {
                         map: mapInstance,
                         to: 6
-                      },
-                      onMounted: (el) => {
-                        console.log(el.map);
                       }
                     },
                   })
