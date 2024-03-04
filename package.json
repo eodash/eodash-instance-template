@@ -9,6 +9,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@a-behairi/eodash": "^5.0.0-alpha"
   },
   "author": "",
   "devDependencies": {

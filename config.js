@@ -3,7 +3,7 @@ let handleMoveEnd = null;
 const { mapInstance, currentUrl } = window?.eodashStore?.states ?? null
 
 /** 
- * @type {import("eodash").EodashConfig}
+ * @type {import("@a-behairi/eodash").EodashConfig}
 */
 export default {
   id: 'template-id',
