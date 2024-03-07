@@ -8,7 +8,7 @@ export default defineConfig((store) => {
 
   return {
     id: 'template-id',
-    stacEndpoint: 'https://eurodatacube.github.io/eodash-catalog/RACE/catalog.json',
+    stacEndpoint: 'https://eodash.github.io/catalog-template/template_catalog/catalog.json',
     routes: [],
     brand: {
       name: "Dashboard",
