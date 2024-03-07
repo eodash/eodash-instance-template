@@ -29,7 +29,7 @@ export default defineConfig((store) => {
       background: {
         id: Symbol(),
         widget: {
-          link: '@eox/map',
+          link: () => import('@eox/map'),
           properties: {
             class: "fill-height fill-width overflow-none",
             center: [15, 48],
@@ -173,7 +173,7 @@ export default defineConfig((store) => {
                   title: 'Information',
                   type: 'web-component',
                   widget: {
-                    link: "@eox/stacinfo",
+                    link: () => import("@eox/stacinfo"),
                     tagName: 'eox-stacinfo',
                     properties: {
                       for: currentUrl,

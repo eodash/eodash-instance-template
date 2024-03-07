@@ -3,7 +3,7 @@ let handleMoveEnd = null;
 const { mapInstance, currentUrl } = window?.eodashStore?.states
 
 /** 
- * @type {import("@eodash/eodash").EodashConfig}
+ * @type {import("@eodash/eodash").EodashConfig<"runtime">}
 */
 export default {
     id: 'template-id',
@@ -28,7 +28,7 @@ export default {
         background: {
             id: Symbol(),
             widget: {
-                link: '@eox/map',
+                link: 'https://cdn.skypack.dev/@eox/map',
                 properties: {
                     class: "fill-height fill-width overflow-none",
                     center: [15, 48],
@@ -142,7 +142,7 @@ export default {
                         title: 'Information',
                         type: 'web-component',
                         widget: {
-                            link: "@eox/stacinfo",
+                            link: "https://cdn.skypack.dev/@eox/stacinfo",
                             tagName: 'eox-stacinfo',
                             properties: {
                                 for: currentUrl,
@@ -172,7 +172,7 @@ export default {
                                 title: 'Information',
                                 type: 'web-component',
                                 widget: {
-                                    link: "@eox/stacinfo",
+                                    link: "https://cdn.skypack.dev/@eox/stacinfo",
                                     tagName: 'eox-stacinfo',
                                     properties: {
                                         for: currentUrl,

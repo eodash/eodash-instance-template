@@ -10,7 +10,7 @@
     "module": "esnext",
     "moduleResolution": "node"
   },
-  "exclude": ["node_modules", "app", "public"],
+  "exclude": ["node_modules", ".eodash/cache", ".eodash/dist", "public"],
   "include": [
     "**/**.js",
     "types.d.ts"
