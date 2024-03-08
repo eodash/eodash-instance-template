@@ -1,3 +1,3 @@
 declare interface Window {
-    eodashStore?: import("@edoash/eodash").EodashStore;
+  eodashStore?: import("@edoash/eodash").EodashStore;
 }
