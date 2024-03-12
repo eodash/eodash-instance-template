@@ -11,7 +11,7 @@ export default {
     "https://eodash.github.io/catalog-template/template_catalog/catalog.json",
   routes: [],
   brand: {
-    name: "Dashboard",
+    name: "Dashboard_change",
     font: {
       family: "Poppins",
     },
