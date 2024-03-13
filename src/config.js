@@ -154,7 +154,7 @@ export default defineConfig((store) => {
                   title: "Information",
                   type: "web-component",
                   widget: {
-                    link: "@eox/stacinfo",
+                    link:()=>import("@eox/stacinfo"),
                     tagName: "eox-stacinfo",
                     properties: {
                       for: currentUrl,

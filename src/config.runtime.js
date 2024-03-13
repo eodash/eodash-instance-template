@@ -1,6 +1,8 @@
 const stacStore = window.eodashStore?.stac?.useSTAcStore();
 let handleMoveEnd = null;
-const { mapInstance, currentUrl } = window?.eodashStore?.states;
+const mapInstance = window?.eodashStore?.states.mapInstance,
+    currentUrl = window?.eodashStore?.states.currentUrl
+
 
 /**
  * @type {import("@eodash/eodash").EodashConfig<"runtime">}
