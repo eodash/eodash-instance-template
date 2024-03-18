@@ -1,4 +1,4 @@
-import{i as _,e as w,y as x,M as k,f as r,z as d,A as p,G as h,j as t,B as g,C as v,D as C,g as m,F as A,E,h as y,n as B,K as L}from"./index-BgjX-JzJ.js";import{u as b,V}from"./VMain-CtPb0u0H.js";import{_ as $}from"./Dashboard-DrhG4B4K.js";import{V as M,a as D}from"./ssrBoot-BJAQ6FjE.js";import"./color-D7htBCB8.js";class I extends HTMLElement{static get observedAttributes(){return["gap"]}constructor(){super(),this.attachShadow({mode:"open"}),this.render()}render(){this.shadowRoot.innerHTML=`
+import{i as _,e as w,y as x,M as k,f as r,z as d,A as p,G as h,j as t,B as g,C as v,D as C,g as m,F as A,E,h as y,n as B,K as L}from"./index-C1IxfCrs.js";import{u as b,V}from"./VMain-DnQGI-GY.js";import{_ as $}from"./Dashboard-DRjtP28k.js";import{V as M,a as D}from"./ssrBoot-DCVjfm2E.js";import"./color-COwQyHzF.js";class I extends HTMLElement{static get observedAttributes(){return["gap"]}constructor(){super(),this.attachShadow({mode:"open"}),this.render()}render(){this.shadowRoot.innerHTML=`
     <style>
       :host {
         display: grid;
