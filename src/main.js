@@ -1,6 +1,6 @@
-import { defineConfig } from "@eodash/eodash";
+import { createEodash } from "@eodash/eodash";
 
-export default defineConfig((store) => {
+export default createEodash((store) => {
   const stacStore = store.stac.useSTAcStore();
   const { mapInstance, currentUrl } = store.states;
   let handleMoveEnd = null;
