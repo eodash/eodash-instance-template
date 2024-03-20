@@ -11,6 +11,6 @@ export default {
         host: true,
         open: true
     },
-    outDir:'dist',
+    outDir:'.eodash/dist',
     cacheDir:'.eodash/temp',
 }
