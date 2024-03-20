@@ -5,7 +5,7 @@ const mapInstance = window?.eodashStore?.states.mapInstance,
 
 
 /**
- * @type {import("@eodash/eodash").EodashConfig<"runtime">}
+ * @type {import("@eodash/eodash").Eodash<"runtime">}
  */
 export default {
   id: "template-id",
