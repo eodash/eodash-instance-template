@@ -1,4 +1,3 @@
-
 /**
  *  @type {(states:import("@eodash/eodash").EodashStore["states"])
  * =>import("@eodash/eodash").Widget}

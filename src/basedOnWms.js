@@ -1,4 +1,3 @@
-
 let handleMoveEnd = null;
 
 /**
@@ -8,8 +7,7 @@ let handleMoveEnd = null;
 export default ({ mapInstance, currentUrl }) => ({
   layout: { x: 9, y: 0, w: 3, h: 12 },
   defineWidget: (selectedSTAC) => {
-    const wmsLink =
-      selectedSTAC?.links.find((l) => l.rel == "wms") ?? false;
+    const wmsLink = selectedSTAC?.links.find((l) => l.rel == "wms") ?? false;
     return wmsLink
       ? {
           id: `${wmsLink["wms:layers"][0]} Map`,
@@ -37,14 +35,14 @@ export default ({ mapInstance, currentUrl }) => ({
               ],
             },
             tagName: "eox-map",
-          }
+          },
         }
       : {
           id: "Information",
           title: "Information",
           type: "web-component",
           widget: {
-            link:()=>import("@eox/stacinfo"),
+            link: () => import("@eox/stacinfo"),
             tagName: "eox-stacinfo",
             properties: {
               for: currentUrl,
