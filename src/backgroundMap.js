@@ -15,22 +15,7 @@ export default ({ mapInstance }) => ({
     tagName: "eox-map",
     onMounted(el, _, router) {
       /** @type {any} */ (el).zoom = router.currentRoute.value.query["z"];
-
       mapInstance.value = /** @type {any} */ (el).map;
-
-      mapInstance.value?.on(
-        "moveend",
-        (handleMoveEnd = /** @param {any} evt  */ (evt) => {
-          router.push({
-            query: {
-              z: `${evt.map.getView().getZoom()}`,
-            },
-          });
-        })
-      );
-    },
-    onUnmounted(_el, _store, _router) {
-      mapInstance.value?.un("moveend", handleMoveEnd);
     },
   },
   type: "web-component",

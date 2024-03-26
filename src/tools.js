@@ -4,7 +4,7 @@ export default {
   title: "Tools",
   layout: { x: 0, y: 0, w: 3, h: 12 },
   widget: {
-    name:"List"
+    name: "List",
   },
   type: "internal",
 };

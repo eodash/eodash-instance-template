@@ -7,7 +7,7 @@ import backgroundMap from "./backgroundMap";
 export default createEodash((store) => ({
   id: "template-id",
   stacEndpoint:
-    "https://eodash.github.io/catalog-template/template_catalog/catalog.json",
+    "https://eurodatacube.github.io/eodash-catalog/RACE/catalog.json",
   routes: [],
   brand: {
     name: "Dashboard",
@@ -25,7 +25,26 @@ export default createEodash((store) => ({
   },
   template: {
     gap: 6,
-    background: backgroundMap(store.states),
-    widgets: [tools, basedOnWms(store.states), container(store.states)],
+    background: {
+      id: Symbol(),
+      type: "internal",
+      widget: {
+        name: "EodashMap",
+      },
+    }, // backgroundMap(store.states),
+    widgets: [
+      tools,
+      {
+        id: Symbol(),
+        layout: { x: 5, y: 0, h: 6, w: 2 },
+        title: "Date Picker",
+        type: "internal",
+        widget: {
+          name: "EodashDatePicker",
+        },
+      },
+      basedOnWms(store.states),
+      container(store.states),
+    ],
   },
 }));

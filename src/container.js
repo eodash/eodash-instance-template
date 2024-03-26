@@ -6,10 +6,11 @@ export default ({ currentUrl, mapInstance }) => ({
   id: Symbol(),
   title: "Container",
   type: "internal",
-  layout: { x: 4, y: 8, w: 4, h: 3 },
+  layout: { x: 4, y: 9, w: 4, h: 3 },
   widget: {
     name: "WidgetsContainer",
     props: {
+      /** @type {(Omit<import("@eodash/eodash").Widget,"layout">)[]} */
       widgets: [
         {
           id: "Information",
@@ -68,6 +69,17 @@ export default ({ currentUrl, mapInstance }) => ({
                     },
                   },
                 };
+          },
+        },
+        {
+          id: Symbol(),
+          title: "date picker",
+          type: "internal",
+          widget: {
+            name: "EodashDatePicker",
+            props: {
+              inline: true,
+            },
           },
         },
       ],
