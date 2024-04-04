@@ -1,10 +1,10 @@
-let handleMoveEnd = null;
+import { store } from "@eodash/eodash";
+const { currentUrl, mapInstance } = store.states;
 
 /**
- * @type {(states:import("@eodash/eodash").EodashStore['states'])
- * =>import("@eodash/eodash").FunctionalWidget}
+ * @type {import("@eodash/eodash").FunctionalWidget}
  **/
-export default ({ mapInstance, currentUrl }) => ({
+export default {
   layout: { x: 9, y: 0, w: 3, h: 12 },
   defineWidget: (selectedSTAC) => {
     const wmsLink = selectedSTAC?.links.find((l) => l.rel == "wms") ?? false;
@@ -58,4 +58,4 @@ export default ({ mapInstance, currentUrl }) => ({
           },
         };
   },
-});
+};

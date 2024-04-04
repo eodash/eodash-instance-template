@@ -1,15 +1,16 @@
+import { store } from "@eodash/eodash";
+const { currentUrl, mapInstance } = store.states;
 /**
- *  @type {(states:import("@eodash/eodash").EodashStore["states"])
- * =>import("@eodash/eodash").Widget}
+ *  @type {import("@eodash/eodash").Widget}
  **/
-export default ({ currentUrl, mapInstance }) => ({
+export default {
   id: Symbol(),
   title: "Container",
   type: "internal",
-  layout: { x: 4, y: 8, w: 4, h: 3 },
+  layout: { x: 4, y: 9, w: 4, h: 3 },
   widget: {
     name: "WidgetsContainer",
-    props: {
+    properties: {
       widgets: [
         {
           id: "Information",
@@ -73,4 +74,4 @@ export default ({ currentUrl, mapInstance }) => ({
       ],
     },
   },
-});
+};
