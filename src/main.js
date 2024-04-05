@@ -15,10 +15,10 @@ export default createEodash((_store) => ({
     },
     theme: {
       colors: {
-        primary: "#880808",
-        secondary: "#AA4A44",
-        background: "#d3d3d3",
-        surface: "#d3d3d3",
+        primary: "#004170",
+        secondary: "#004170",
+        background: "#fff",
+        surface: "#eee",
       },
     },
   },
@@ -32,14 +32,21 @@ export default createEodash((_store) => ({
       },
     },
     widgets: [
-      tools,
-      basedOnWms,
-      container,
       {
-        type: "internal",
         id: Symbol(),
-        layout: { x: 4, y: 0, h: 1, w: 4 },
-        title: "Date Picker",
+        type: "internal",
+        title: "itemfilter",
+        layout: { x: 0, y: 0, w: 3, h: 12 },
+        slidable: false,
+        widget: {
+          name: "EodashItemFilter",
+        },
+      },
+      {
+        id: Symbol(),
+        type: "internal",
+        title: "datepicker",
+        layout: { x: 5, y: 11, w: 2, h: 1 },
         slidable: false,
         widget: {
           name: "EodashDatePicker",
@@ -48,6 +55,7 @@ export default createEodash((_store) => ({
           },
         },
       },
+      basedOnWms,
     ],
   },
 }));
