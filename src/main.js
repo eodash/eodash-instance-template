@@ -12,20 +12,21 @@ export default createEodash({
       family: "Poppins",
     },
     logo: "/logo.png",
+    footerText:"eodash instance template",
     theme: {
       colors: {
-        primary: "#880808",
-        secondary: "#AA4A44",
-        background: "#d3d3d3",
-        surface: "#d3d3d3",
+        primary: "#004170",
+        secondary: "#004170",
+        background: "#fff",
+        surface: "#eee",
       },
     },
   },
   template: {
     gap: 6,
     background: {
-      id: Symbol(),
       type: "internal",
+      id: Symbol(),
       widget: {
         name: "EodashMap",
       },
