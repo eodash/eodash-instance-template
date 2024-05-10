@@ -1,19 +1,17 @@
 import { createEodash } from "@eodash/eodash";
-import tools from "./tools";
-import basedOnWms from "./basedOnWms";
+import information from "./information";
 import container from "./container";
-import backgroundMap from "./backgroundMap";
 
-export default createEodash((store) => ({
+export default createEodash({
   id: "template-id",
   stacEndpoint:
     "https://eurodatacube.github.io/eodash-catalog/RACE/catalog.json",
-  routes: [],
   brand: {
     name: "Dashboard",
     font: {
       family: "Poppins",
     },
+    logo: "/logo.png",
     theme: {
       colors: {
         primary: "#880808",
@@ -31,20 +29,44 @@ export default createEodash((store) => ({
       widget: {
         name: "EodashMap",
       },
-    }, // backgroundMap(store.states),
+    },
+    loading: {
+      id: Symbol(),
+      type: "web-component",
+      widget: {
+        // https://uiball.com/ldrs/
+        link: "https://cdn.jsdelivr.net/npm/ldrs/dist/auto/mirage.js",
+        tagName: "l-mirage",
+        properties: {
+          class: "align-self-center justify-self-center",
+          size: "120",
+          speed: "2.5",
+          color: "#004170",
+        },
+      },
+    },
     widgets: [
-      tools,
+      information,
+      container,
       {
         id: Symbol(),
-        layout: { x: 5, y: 0, h: 6, w: 2 },
+        slidable: false,
+        title: "Tools",
+        layout: { x: 0, y: 0, w: 3, h: 12 },
+        widget: {
+          name: "List",
+        },
+        type: "internal",
+      },
+      {
+        id: Symbol(),
+        layout: { x: 4, y: 0, h: 4, w: 4 },
         title: "Date Picker",
         type: "internal",
         widget: {
           name: "EodashDatePicker",
         },
       },
-      basedOnWms(store.states),
-      container(store.states),
     ],
   },
-}));
+});

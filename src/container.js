@@ -1,40 +1,20 @@
 /**
- *  @type {(states:import("@eodash/eodash").EodashStore["states"])
- * =>import("@eodash/eodash").Widget}
+ *  @type {import("@eodash/eodash").InternalComponentWidget}
  **/
-export default ({ currentUrl, mapInstance }) => ({
+export default {
   id: Symbol(),
   title: "Container",
   type: "internal",
   layout: { x: 4, y: 9, w: 4, h: 3 },
   widget: {
     name: "WidgetsContainer",
-    props: {
-      /** @type {(Omit<import("@eodash/eodash").Widget,"layout">)[]} */
+    properties: {
+      /** @type {Omit<import("@eodash/eodash").Widget,"layout">[]} */
       widgets: [
-        {
-          id: "Information",
-          title: "Information",
-          type: "web-component",
-          widget: {
-            link: () => import("@eox/stacinfo"),
-            tagName: "eox-stacinfo",
-            properties: {
-              for: currentUrl,
-              allowHtml: "true",
-              styleOverride:
-                "#properties li > .value {font-weight: normal !important;}",
-              header: "[]",
-              subheader: "[]",
-              properties: '["description"]',
-              featured: "[]",
-              footer: "[]",
-            },
-          },
-        },
-        {
+        /** @type {Omit<import("@eodash/eodash").FunctionalWidget,"layout">} */
+        ({
           defineWidget: (selectedSTAC) => {
-            const legendURL = selectedSTAC?.assets?.legend?.href ?? false;
+            const legendURL = selectedSTAC?.assets?.["legend"]?.href;
             return legendURL
               ? {
                   id: legendURL,
@@ -54,35 +34,19 @@ export default ({ currentUrl, mapInstance }) => ({
                   },
                 }
               : {
-                  id: "reset-zoom",
-                  title: "Reset Zoom",
-                  type: "web-component",
+                  id: Symbol(),
+                  title: "Date Picker",
+                  type: "internal",
                   widget: {
-                    link: new URL(
-                      "/reset-zoom-btn/ResetZoom.S2AXqNgZ.js",
-                      import.meta.url
-                    ).href,
-                    tagName: "reset-zoom-btn",
+                    name: "EodashDatePicker",
                     properties: {
-                      map: mapInstance,
-                      to: 6,
+                      inline: true,
                     },
                   },
                 };
           },
-        },
-        {
-          id: Symbol(),
-          title: "date picker",
-          type: "internal",
-          widget: {
-            name: "EodashDatePicker",
-            props: {
-              inline: true,
-            },
-          },
-        },
+        }),
       ],
     },
   },
-});
+};
