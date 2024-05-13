@@ -1,18 +1,18 @@
 import { createEodash } from "@eodash/eodash";
-import tools from "./tools";
-import basedOnWms from "./basedOnWms";
+import information from "./information";
 import container from "./container";
 
-export default createEodash((_store) => ({
+export default createEodash({
   id: "template-id",
   stacEndpoint:
-    "https://eodash.github.io/catalog-template/template_catalog/catalog.json",
-  routes: [],
+    "https://eurodatacube.github.io/eodash-catalog/RACE/catalog.json",
   brand: {
     name: "Dashboard",
     font: {
       family: "Poppins",
     },
+    logo: "/logo.png",
+    footerText:"eodash instance template",
     theme: {
       colors: {
         primary: "#004170",
@@ -31,31 +31,43 @@ export default createEodash((_store) => ({
         name: "EodashMap",
       },
     },
+    loading: {
+      id: Symbol(),
+      type: "web-component",
+      widget: {
+        // https://uiball.com/ldrs/
+        link: "https://cdn.jsdelivr.net/npm/ldrs/dist/auto/mirage.js",
+        tagName: "l-mirage",
+        properties: {
+          class: "align-self-center justify-self-center",
+          size: "120",
+          speed: "2.5",
+          color: "#004170",
+        },
+      },
+    },
     widgets: [
+      information,
+      container,
       {
         id: Symbol(),
-        type: "internal",
-        title: "itemfilter",
-        layout: { x: 0, y: 0, w: 3, h: 12 },
         slidable: false,
+        title: "Tools",
+        layout: { x: 0, y: 0, w: 3, h: 12 },
         widget: {
-          name: "EodashItemFilter",
+          name: "List",
         },
+        type: "internal",
       },
       {
         id: Symbol(),
+        layout: { x: 4, y: 0, h: 4, w: 4 },
+        title: "Date Picker",
         type: "internal",
-        title: "datepicker",
-        layout: { x: 5, y: 11, w: 2, h: 1 },
-        slidable: false,
         widget: {
           name: "EodashDatePicker",
-          properties: {
-            inline: true,
-          },
         },
       },
-      basedOnWms,
     ],
   },
-}));
+});

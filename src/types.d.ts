@@ -1,5 +1,5 @@
 declare interface Window {
-  eodashStore?: import("@edoash/eodash").EodashStore;
+  eodashStore?: import("@eodash/eodash").EodashStore;
 }
 declare module "@eox/stacinfo" {
   export const EOxStacInfo: CustomElementConstructor;

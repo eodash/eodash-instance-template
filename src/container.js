@@ -1,7 +1,5 @@
-import { store } from "@eodash/eodash";
-const { currentUrl, mapInstance } = store.states;
 /**
- *  @type {import("@eodash/eodash").Widget}
+ *  @type {import("@eodash/eodash").InternalComponentWidget}
  **/
 export default {
   id: Symbol(),
@@ -11,30 +9,12 @@ export default {
   widget: {
     name: "WidgetsContainer",
     properties: {
+      /** @type {Omit<import("@eodash/eodash").Widget,"layout">[]} */
       widgets: [
-        {
-          id: "Information",
-          title: "Information",
-          type: "web-component",
-          widget: {
-            link: () => import("@eox/stacinfo"),
-            tagName: "eox-stacinfo",
-            properties: {
-              for: currentUrl,
-              allowHtml: "true",
-              styleOverride:
-                "#properties li > .value {font-weight: normal !important;}",
-              header: "[]",
-              subheader: "[]",
-              properties: '["description"]',
-              featured: "[]",
-              footer: "[]",
-            },
-          },
-        },
-        {
+        /** @type {Omit<import("@eodash/eodash").FunctionalWidget,"layout">} */
+        ({
           defineWidget: (selectedSTAC) => {
-            const legendURL = selectedSTAC?.assets?.legend?.href ?? false;
+            const legendURL = selectedSTAC?.assets?.["legend"]?.href;
             return legendURL
               ? {
                   id: legendURL,
@@ -54,23 +34,18 @@ export default {
                   },
                 }
               : {
-                  id: "reset-zoom",
-                  title: "Reset Zoom",
-                  type: "web-component",
+                  id: Symbol(),
+                  title: "Date Picker",
+                  type: "internal",
                   widget: {
-                    link: new URL(
-                      "/reset-zoom-btn/ResetZoom.S2AXqNgZ.js",
-                      import.meta.url
-                    ).href,
-                    tagName: "reset-zoom-btn",
+                    name: "EodashDatePicker",
                     properties: {
-                      map: mapInstance,
-                      to: 6,
+                      inline: true,
                     },
                   },
                 };
           },
-        },
+        }),
       ],
     },
   },
