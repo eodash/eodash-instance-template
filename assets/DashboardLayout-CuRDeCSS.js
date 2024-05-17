@@ -1,4 +1,4 @@
-import{q as _,L as w,M as c,r as x,Z as v,P as a,Q as l,R as m,_ as h,T as e,S as g,m as y,U as b,F as k,V as C,W as V,a as A,$}from"./index-CwrvWB_L.js";import{V as E}from"./VBtn-BmhLHY2I.js";import{V as L}from"./index-c84Qe4Os.js";import{V as B}from"./VMain-CId3PfNK.js";import"./color-CwozkxI5.js";import"./dimensions-BKnfN3cs.js";import"./ssrBoot-D8dpAoR-.js";class M extends HTMLElement{static get observedAttributes(){return["gap"]}constructor(){super(),this.attachShadow({mode:"open"}),this.render()}render(){this.shadowRoot.innerHTML=`
+import{q as _,L as w,M as c,r as x,Z as v,P as a,Q as l,R as m,_ as h,T as e,S as g,m as y,U as b,F as k,V as C,W as V,a as A,$}from"./index-DUifMFkE.js";import{V as E}from"./VBtn-DIKQ4rb4.js";import{V as L}from"./index-CMEsRo45.js";import{V as B}from"./VMain-4YMOt4FJ.js";import"./color-DR0at4pz.js";import"./dimensions-DDbmO7a4.js";import"./ssrBoot-B-2G76hP.js";class M extends HTMLElement{static get observedAttributes(){return["gap"]}constructor(){super(),this.attachShadow({mode:"open"}),this.render()}render(){this.shadowRoot.innerHTML=`
     <style>
       :host {
         display: grid;
