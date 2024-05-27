@@ -12,7 +12,8 @@ export default createEodash({
       family: "Poppins",
     },
     logo: "/logo.png",
-    footerText:"eodash instance template",
+    errorMessage:"something went wrong, please contact demo@email.com if the issue persists", 
+    footerText: "eodash instance template",
     theme: {
       colors: {
         primary: "#004170",
@@ -51,7 +52,6 @@ export default createEodash({
       container,
       {
         id: Symbol(),
-        slidable: false,
         title: "Tools",
         layout: { x: 0, y: 0, w: 3, h: 12 },
         widget: {

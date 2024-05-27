@@ -11,8 +11,7 @@
     "format": "prettier . --write"
   },
   "dependencies": {
-    "@eodash/eodash": "^5.0.0-alpha.2.1",
-    "@eox/map": "^1.8.2",
+    "@eodash/eodash": "^5.0.0-alpha.2.3",
     "@eox/stacinfo": "^0.3.3"
   },
   "author": "",
