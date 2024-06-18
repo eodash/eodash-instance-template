@@ -1,6 +1,6 @@
-# Eodash v5 Configuration and Deployment Template
+# eodash Configuration and Deployment Template
 
-This is a template repository for configuring and deploying [eodash-v5](https://github.com/EOX-A/eodash-v5)
+This is a template repository for configuring and deploying [eodash](https://github.com/eodash/eodash)
 
 ## Prerequisites
 
