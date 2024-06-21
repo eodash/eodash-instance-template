@@ -29,7 +29,7 @@ const { loadSelectedSTAC } = store.stac.useSTAcStore();
 const links = computed(() => stac.value.filter((link) => link?.rel == "child"));
 
 const getSelected = async (idx) => {
-  const link = stac.value![idx];
+  const link = links.value![idx];
   await loadSelectedSTAC(link.href);
   console.log(selectedStac.value);
 };
