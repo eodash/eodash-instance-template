@@ -1,4 +1,4 @@
-import{$ as p,a0 as c,at as d}from"./index-Cvb3b3yK.js";import m from"./DynamicWebComponent-DhSpMLP7.js";const f={__name:"EodashItemFilter",setup(u){const r=()=>d(()=>import("./eox-itemfilter-DzNaeUZj.js"),[]),o={config:{titleProperty:"title",filterProperties:[{keys:["title","themes"],title:"Search",type:"text"},{key:"themes",title:"Theme Filter",type:"multiselect"}],aggregateResults:"themes",enableHighlighting:!0,expandMultipleFilters:!1,expandMultipleResults:!1}},a=(t,i)=>{t.style.height="100%";const s=document.createElement("style");s.innerHTML=`
+import{$ as p,a0 as c,at as d}from"./index-DBoWNDl8.js";import m from"./DynamicWebComponent-Cx5W-nMa.js";const f={__name:"EodashItemFilter",setup(u){const r=()=>d(()=>import("./eox-itemfilter-DzNaeUZj.js"),[]),o={config:{titleProperty:"title",filterProperties:[{keys:["title","themes"],title:"Search",type:"text"},{key:"themes",title:"Theme Filter",type:"multiselect"}],aggregateResults:"themes",enableHighlighting:!0,expandMultipleFilters:!1,expandMultipleResults:!1}},a=(t,i)=>{t.style.height="100%";const s=document.createElement("style");s.innerHTML=`
     section {
       margin: 0 !important;
     }
