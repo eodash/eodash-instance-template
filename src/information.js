@@ -1,20 +1,21 @@
 import { store } from "@eodash/eodash";
 
 const { currentUrl } = store.states;
+
 /**
  * STAC information panel
  * @type {import("@eodash/eodash").FunctionalWidget}
  **/
 export default {
-  layout: { x: 9, y: 0, w: 3, h: 12 },
   defineWidget: (selectedSTAC) => {
     // show "eox-stacinfo" web component if a stac object is selected and
-    // hide the panel if not
+    // hide it if not
     return selectedSTAC
       ? {
           id: "Information",
           title: "Information",
           type: "web-component",
+          layout: { x: 9, y: 0, w: 3, h: 12 },
           widget: {
             // importing an installed dependency as a web component definition
             link: () => import("@eox/stacinfo"),

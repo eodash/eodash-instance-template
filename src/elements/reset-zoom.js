@@ -1,5 +1,4 @@
 export class ResetZoomBtn extends HTMLElement {
-  
   /**
    * defines the current zoom.
    * triggers a rerender when a value is set
@@ -27,7 +26,7 @@ export class ResetZoomBtn extends HTMLElement {
   };
 
   /** map element selector */
-  for = 'eox-map'
+  for = "eox-map";
   /** the desired value to reset the zoom to */
   to = 4;
 
@@ -51,7 +50,7 @@ export class ResetZoomBtn extends HTMLElement {
     // and update the current zoom
     const pushState = history.pushState;
     window.history.pushState = function (...args) {
-      updateCurrentZoom(/** @type {string} */(args?.[2]));
+      updateCurrentZoom(/** @type {string} */ (args?.[2]));
       return pushState.apply(window.history, arguments);
     };
   }
@@ -61,9 +60,9 @@ export class ResetZoomBtn extends HTMLElement {
     const searchParams = new URLSearchParams(window.location.search);
     searchParams.set("z", this.to.toString() ?? "");
     window.history.pushState(null, "", `?${searchParams}`);
-    const map = document.querySelector(this.for)
+    const map = document.querySelector(this.for);
     //@ts-expect-error eox-map attribute
-    map.zoom = this.to
+    map.zoom = this.to;
   };
 
   static get observedAttributes() {
