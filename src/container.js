@@ -5,47 +5,38 @@ export default {
   id: Symbol(),
   title: "Container",
   type: "internal",
-  layout: { x: 4, y: 9, w: 4, h: 3 },
+  layout: { x: 4, y: 8, w: 4, h: 4 },
   widget: {
+    // an internal widget that supports holding multiple widgets in one panel
+    // provided by `@eodash/eodash`
     name: "WidgetsContainer",
     properties: {
       /** @type {Omit<import("@eodash/eodash").Widget,"layout">[]} */
       widgets: [
-        /** @type {Omit<import("@eodash/eodash").FunctionalWidget,"layout">} */
-        ({
-          defineWidget: (selectedSTAC) => {
-            const legendURL = selectedSTAC?.assets?.["legend"]?.href;
-            return legendURL
-              ? {
-                  id: legendURL,
-                  title: "Legend",
-                  type: "web-component",
-                  widget: {
-                    link: "https://unpkg.com/progressive-image-element@latest/dist/index.js",
-                    tagName: "progressive-image",
-                    properties: {
-                      src: legendURL,
-                    },
-                    onMounted(el) {
-                      const img = document.createElement("img");
-                      img.src = legendURL;
-                      el.appendChild(img);
-                    },
-                  },
-                }
-              : {
-                  id: Symbol(),
-                  title: "Date Picker",
-                  type: "internal",
-                  widget: {
-                    name: "EodashDatePicker",
-                    properties: {
-                      inline: true,
-                    },
-                  },
-                };
+        // web component defined in `src/elements/reset-zoom.js`
+        // registered in the window and assigned a tag name using `widgets.constructorProp`
+        // https://eodash.github.io/eodash/widgets/webcomponent-widgets.html#registering-web-components-in-eodash
+        {
+          id: "reset zoom",
+          title: "Reset Zoom",
+          type: "web-component",
+          widget: {
+            link: new URL("./elements/reset-zoom.js", import.meta.url).href,
+            constructorProp: "ResetZoomBtn",
+            tagName: "reset-zoom",
+            properties: {
+              to: 3,
+            },
           },
-        }),
+        },
+        {
+          id: Symbol(),
+          title: "Date Picker",
+          type: "internal",
+          widget: {
+            name: "EodashDatePicker",
+          },
+        },
       ],
     },
   },
