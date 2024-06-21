@@ -1,6 +1,7 @@
-# Eodash v5 Configuration and Deployment Template
+# eodash Configuration and Deployment Template
 
 This is an instance template for [@eodash/eodash](https://github.com/eodash/eodash). Check Github's guide on [how to create a repository from a template](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template)
+
 
 ## Prerequisites
 
