@@ -2,10 +2,9 @@
 
 This is an instance template for [@eodash/eodash](https://github.com/eodash/eodash). Check Github's guide on [how to create a repository from a template](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template)
 
-
 ## Prerequisites
 
-- Node v18 or higher
+- Node v20.15.1 or higher
 
 ## Get Started
 

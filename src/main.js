@@ -28,7 +28,7 @@ export default createEodash({
   },
   template: {
     // gap size between widgets
-    gap: 6,
+    gap: 0,
     // internal widget provided by `@eodash/eodash`
     // https://eodash.github.io/eodash/widgets/internal-widgets.html#using-eodash-provided-internal-widgets
     background: {
@@ -71,24 +71,34 @@ export default createEodash({
         widget: {
           name: "List",
           properties: {
+            // props of the custom component
             outlined: false,
           },
         },
         type: "internal",
       },
       {
-        id: Symbol(),
-        layout: { x: 4, y: 0, h: 1, w: 4 },
-        title: "Date Picker",
-        type: "web-component",
+        defineWidget: (selected) => {
+          return selected
+            ? {
+                id: "layercontrol",
+                layout: { x: 9, y: 8, w: 3, h: 4 },
+                title: "Layer Control",
+                type: "internal",
+                widget: {
+                  name: "EodashLayerControl",
+                },
+              }
+            : null;
+        },
+      },
+      {
+        id: "mapbtns",
+        layout: { x: 3, y: 0, w: 1, h: 2 },
+        title: "Map Buttons",
+        type: "internal",
         widget: {
-          link: "https://cdn.skypack.dev/@eox/drawtools",
-          tagName: "eox-drawtools",
-          properties: {
-            type: "Polygon",
-            for: "eox-map",
-            showEditor: true,
-          },
+          name: "EodashMapBtns",
         },
       },
     ],

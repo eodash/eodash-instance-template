@@ -5,7 +5,7 @@ export default {
   id: Symbol(),
   title: "Container",
   type: "internal",
-  layout: { x: 4, y: 8, w: 4, h: 4 },
+  layout: { x: 4, y: 9, w: 4, h: 3 },
   widget: {
     // an internal widget that supports holding multiple widgets in one panel
     // provided by `@eodash/eodash`

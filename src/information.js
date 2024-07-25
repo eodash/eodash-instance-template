@@ -14,25 +14,25 @@ export default {
       ? {
           id: "Information",
           title: "Information",
+          layout: { x: 9, y: 0, w: 3, h: 8 },
           type: "web-component",
-          layout: { x: 9, y: 0, w: 3, h: 12 },
           widget: {
             // importing an installed dependency as a web component definition
             link: () => import("@eox/stacinfo"),
-            tagName: "eox-stacinfo",
             // assigning `eox-stacinfo` attributes and properties
             properties: {
+              class: "pa-5 fill-height",
               // assigning currently selected endpoint from the store
               for: currentUrl,
               allowHtml: "true",
-              styleOverride:
-                "#properties li > .value {font-weight: normal !important;}",
-              header: "[]",
+              header: '["title"]',
+              tags: '["themes"]',
               subheader: "[]",
-              properties: '["description"]',
-              featured: "[]",
-              footer: "[]",
+              properties: '["satellite","sensor","agency","extent"]',
+              featured: '["description","providers","assets","links"]',
+              footer: '["sci:citation"]',
             },
+            tagName: "eox-stacinfo",
           },
         }
       : null;

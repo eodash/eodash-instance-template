@@ -11,15 +11,16 @@
     "format": "prettier . --write"
   },
   "dependencies": {
-    "@eodash/eodash": "^5.0.0-alpha.2.6",
+    "@eodash/eodash": "^5.0.0-alpha.2.12",
     "@eox/stacinfo": "^0.3.3"
   },
   "author": "",
   "devDependencies": {
     "@eox/eslint-config": "^1.0.1",
-    "@typescript-eslint/eslint-plugin": "^7.0.2",
-    "@typescript-eslint/parser": "^7.0.2",
-    "eslint": "^8.56.0",
-    "typescript": "^5.3.3"
+    "@typescript-eslint/eslint-plugin": "^7.17.0",
+    "@typescript-eslint/parser": "^7.17.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-vue": "^9.27.0",
+    "typescript": "^5.5.4"
   }
 }
