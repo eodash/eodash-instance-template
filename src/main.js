@@ -1,11 +1,10 @@
-import { createEodash } from "@eodash/eodash";
-import information from "./information";
-import container from "./container";
+import { reactive } from "vue";
+import { store } from "@eodash/eodash";
 
-export default createEodash({
+export const eodash = reactive({
   id: "template-id",
   stacEndpoint:
-    "https://eurodatacube.github.io/eodash-catalog/RACE/catalog.json",
+    "https://eodashcatalog.eox.at/test-style/trilateral/catalog.json",
   brand: {
     name: "Dashboard",
     font: {
@@ -18,19 +17,11 @@ export default createEodash({
         primary: "#004170",
         secondary: "#004170",
         background: "#fff",
-        surface: "#eee",
+        surface: "#fff",
       },
     },
   },
   template: {
-    gap: 6,
-    background: {
-      type: "internal",
-      id: Symbol(),
-      widget: {
-        name: "EodashMap",
-      },
-    },
     loading: {
       id: Symbol(),
       type: "web-component",
@@ -46,28 +37,93 @@ export default createEodash({
         },
       },
     },
+    background: {
+      id: Symbol(),
+      type: "internal",
+      widget: {
+        name: "EodashMap",
+      },
+    },
     widgets: [
-      information,
-      container,
       {
         id: Symbol(),
-        slidable: false,
-        title: "Tools",
-        layout: { x: 0, y: 0, w: 3, h: 12 },
-        widget: {
-          name: "List",
-        },
         type: "internal",
+        title: "Indicators",
+        layout: { x: 0, y: 0, w: 3, h: 6 },
+        widget: {
+          name: "EodashItemFilter",
+          properties: {
+            aggregateResults: false,
+          },
+        },
       },
       {
         id: Symbol(),
-        layout: { x: 4, y: 0, h: 4, w: 4 },
-        title: "Date Picker",
         type: "internal",
+        title: "Layer Control",
+        layout: { x: 0, y: 6, w: 3, h: 6 },
         widget: {
-          name: "EodashDatePicker",
+          name: "EodashLayerControl",
+        },
+      },
+      {
+        defineWidget: (selectedSTAC) => {
+          return selectedSTAC
+            ? {
+                id: "Information",
+                title: "Information",
+                layout: { x: 9, y: 0, w: 3, h: 12 },
+                type: "web-component",
+                widget: {
+                  link: async () => await import("@eox/stacinfo"),
+                  properties: {
+                    for: store.states.currentUrl,
+                    allowHtml: "true",
+                    header: '["title"]',
+                    tags: '["themes"]',
+                    subheader: "[]",
+                    properties: '["satellite","sensor","agency","extent"]',
+                    featured: '["description","providers","assets","links"]',
+                    footer: '["sci:citation"]',
+                  },
+                  tagName: "eox-stacinfo",
+                },
+              }
+            : null;
+        },
+      },
+      {
+        defineWidget: (selectedSTAC) => {
+          return selectedSTAC
+            ? {
+                id: "Datepicker",
+                type: "internal",
+                layout: { x: 5, y: 10, w: 1, h: 1 },
+                title: "Datepicker",
+                widget: {
+                  name: "EodashDatePicker",
+                },
+              }
+            : null;
+        },
+      },
+      {
+        defineWidget: (selected) => {
+          return selected
+            ? {
+                id: "Buttons",
+                layout: { x: 8, y: 0, w: 1, h: 1 },
+                title: "Buttons",
+                type: "internal",
+                widget: {
+                  name: "EodashMapBtns",
+                },
+              }
+            : null;
         },
       },
     ],
   },
 });
+
+export default eodash;

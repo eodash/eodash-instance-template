@@ -4,6 +4,7 @@
   "description": "",
   "type": "module",
   "scripts": {
+    "start": "eodash dev",
     "dev": "eodash dev",
     "build": "eodash build",
     "preview": "eodash preview",
@@ -11,8 +12,8 @@
     "format": "prettier . --write"
   },
   "dependencies": {
-    "@eodash/eodash": "^5.0.0-alpha.2.1",
-    "@eox/map": "^1.8.2",
+    "@eodash/eodash": "^5.0.0-alpha.2.15",
+    "@eox/map": "^1.11.2",
     "@eox/stacinfo": "^0.3.3"
   },
   "author": "",
