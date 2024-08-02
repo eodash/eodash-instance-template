@@ -1,27 +1,45 @@
-import { reactive } from "vue";
-import { store } from "@eodash/eodash";
+import { createEodash, store } from "@eodash/eodash";
+import information from "./information";
+import container from "./container";
 
-export const eodash = reactive({
+export default createEodash({
   id: "template-id",
   stacEndpoint:
-    "https://eodashcatalog.eox.at/test-style/trilateral/catalog.json",
+  "https://eodashcatalog.eox.at/test-style/trilateral/catalog.json",
+  // https://eodash.github.io/eodash/branding.html
   brand: {
     name: "Dashboard",
     font: {
       family: "Poppins",
+      link: new URL("./assets/poppins.css", import.meta.url).href,
     },
     logo: "/logo.png",
-    footerText:"eodash instance template",
+    errorMessage:
+      "something went wrong, please contact demo@email.com if the issue persists",
+    footerText: "eodash instance template",
     theme: {
       colors: {
         primary: "#004170",
         secondary: "#004170",
         background: "#fff",
-        surface: "#fff",
+        surface: "#eee",
       },
     },
   },
   template: {
+    // gap size between widgets
+    gap: 0,
+    // internal widget provided by `@eodash/eodash`
+    // https://eodash.github.io/eodash/widgets/internal-widgets.html#using-eodash-provided-internal-widgets
+    background: {
+      type: "internal",
+      id: Symbol(),
+      widget: {
+        name: "EodashMap",
+      },
+    },
+    // web component as a loader animation widget,
+    // imported and registered from a CDN
     loading: {
       id: Symbol(),
       type: "web-component",
@@ -30,6 +48,8 @@ export const eodash = reactive({
         link: "https://cdn.jsdelivr.net/npm/ldrs/dist/auto/mirage.js",
         tagName: "l-mirage",
         properties: {
+          // using vuetify utility classes to center the loader
+          // https://vuetifyjs.com/en/styles/display/#display
           class: "align-self-center justify-self-center",
           size: "120",
           speed: "2.5",
@@ -37,93 +57,50 @@ export const eodash = reactive({
         },
       },
     },
-    background: {
-      id: Symbol(),
-      type: "internal",
-      widget: {
-        name: "EodashMap",
-      },
-    },
     widgets: [
+      information,
+
+      container,
+      // custom internal widget
+      // checkout `src/widgets/List.vue`
+      // https://eodash.github.io/eodash/widgets/internal-widgets.html#creating-your-own-internal-widget
       {
         id: Symbol(),
-        type: "internal",
-        title: "Indicators",
-        layout: { x: 0, y: 0, w: 3, h: 6 },
+        title: "Tools",
+        layout: { x: 0, y: 0, w: 3, h: 5 },
         widget: {
-          name: "EodashItemFilter",
+          name: "List",
           properties: {
-            aggregateResults: false,
+            // props of the custom component
+            outlined: false,
           },
         },
-      },
-      {
-        id: Symbol(),
         type: "internal",
-        title: "Layer Control",
-        layout: { x: 0, y: 6, w: 3, h: 6 },
-        widget: {
-          name: "EodashLayerControl",
-        },
-      },
-      {
-        defineWidget: (selectedSTAC) => {
-          return selectedSTAC
-            ? {
-                id: "Information",
-                title: "Information",
-                layout: { x: 9, y: 0, w: 3, h: 12 },
-                type: "web-component",
-                widget: {
-                  link: async () => await import("@eox/stacinfo"),
-                  properties: {
-                    for: store.states.currentUrl,
-                    allowHtml: "true",
-                    header: '["title"]',
-                    tags: '["themes"]',
-                    subheader: "[]",
-                    properties: '["satellite","sensor","agency","extent"]',
-                    featured: '["description","providers","assets","links"]',
-                    footer: '["sci:citation"]',
-                  },
-                  tagName: "eox-stacinfo",
-                },
-              }
-            : null;
-        },
-      },
-      {
-        defineWidget: (selectedSTAC) => {
-          return selectedSTAC
-            ? {
-                id: "Datepicker",
-                type: "internal",
-                layout: { x: 5, y: 10, w: 1, h: 1 },
-                title: "Datepicker",
-                widget: {
-                  name: "EodashDatePicker",
-                },
-              }
-            : null;
-        },
       },
       {
         defineWidget: (selected) => {
           return selected
             ? {
-                id: "Buttons",
-                layout: { x: 8, y: 0, w: 1, h: 1 },
-                title: "Buttons",
+                id: "layercontrol",
+                layout: { x: 9, y: 8, w: 3, h: 4 },
+                title: "Layer Control",
                 type: "internal",
                 widget: {
-                  name: "EodashMapBtns",
+                  name: "EodashLayerControl",
                 },
               }
             : null;
         },
       },
+      {
+        id: "mapbtns",
+        layout: { x: 8, y: 0, w: 1, h: 2 },
+        title: "Map Buttons",
+        type: "internal",
+        widget: {
+          name: "EodashMapBtns",
+        },
+      },
     ],
   },
 });
-
-export default eodash;
