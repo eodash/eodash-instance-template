@@ -5,7 +5,7 @@ import container from "./container";
 export default createEodash({
   id: "template-id",
   stacEndpoint:
-    "https://eurodatacube.github.io/eodash-catalog/RACE/catalog.json",
+  "https://eodashcatalog.eox.at/test-style/trilateral/catalog.json",
   // https://eodash.github.io/eodash/branding.html
   brand: {
     name: "Dashboard",
@@ -67,7 +67,7 @@ export default createEodash({
       {
         id: Symbol(),
         title: "Tools",
-        layout: { x: 0, y: 0, w: 3, h: 12 },
+        layout: { x: 0, y: 0, w: 3, h: 5 },
         widget: {
           name: "List",
           properties: {
@@ -94,7 +94,7 @@ export default createEodash({
       },
       {
         id: "mapbtns",
-        layout: { x: 3, y: 0, w: 1, h: 2 },
+        layout: { x: 8, y: 0, w: 1, h: 2 },
         title: "Map Buttons",
         type: "internal",
         widget: {

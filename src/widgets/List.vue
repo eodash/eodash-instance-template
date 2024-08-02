@@ -1,6 +1,6 @@
 <template>
   <v-card class="mx-auto d-flex flex-column overflow-auto fill-height">
-    <v-list lines="one" class="overflow-auto">
+    <v-list lines="one" class="overflow-y-auto overflow-x-hidden">
       <v-list-item
         v-for="(link, idx) in links"
         :key="idx"
