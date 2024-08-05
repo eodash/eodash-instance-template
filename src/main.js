@@ -1,12 +1,10 @@
 import { createEodash, store } from "@eodash/eodash";
-import information from "./information";
-import container from "./container";
+const { currentUrl } = store.states;
 
 export default createEodash({
   id: "template-id",
   stacEndpoint:
-  "https://eodashcatalog.eox.at/test-style/trilateral/catalog.json",
-  // https://eodash.github.io/eodash/branding.html
+    "https://eodashcatalog.eox.at/test-style/trilateral/catalog.json",
   brand: {
     name: "Dashboard",
     font: {
@@ -22,83 +20,114 @@ export default createEodash({
         primary: "#004170",
         secondary: "#004170",
         background: "#fff",
-        surface: "#eee",
+        surface: "#fff",
       },
     },
   },
   template: {
-    // gap size between widgets
     gap: 0,
-    // internal widget provided by `@eodash/eodash`
-    // https://eodash.github.io/eodash/widgets/internal-widgets.html#using-eodash-provided-internal-widgets
     background: {
-      type: "internal",
       id: Symbol(),
+      type: "internal",
       widget: {
         name: "EodashMap",
-      },
-    },
-    // web component as a loader animation widget,
-    // imported and registered from a CDN
-    loading: {
-      id: Symbol(),
-      type: "web-component",
-      widget: {
-        // https://uiball.com/ldrs/
-        link: "https://cdn.jsdelivr.net/npm/ldrs/dist/auto/mirage.js",
-        tagName: "l-mirage",
         properties: {
-          // using vuetify utility classes to center the loader
-          // https://vuetifyjs.com/en/styles/display/#display
-          class: "align-self-center justify-self-center",
-          size: "120",
-          speed: "2.5",
-          color: "#004170",
+          // enableCompare: true,
         },
       },
     },
     widgets: [
-      information,
-
-      container,
-      // custom internal widget
-      // checkout `src/widgets/List.vue`
-      // https://eodash.github.io/eodash/widgets/internal-widgets.html#creating-your-own-internal-widget
       {
         id: Symbol(),
-        title: "Tools",
-        layout: { x: 0, y: 0, w: 3, h: 5 },
+        type: "internal",
+        title: "Indicators",
+        layout: { x: 0, y: 0, w: 3, h: 8 },
         widget: {
-          name: "List",
+          name: "EodashItemFilter",
           properties: {
-            // props of the custom component
-            outlined: false,
+            // enableCompare: true,
+            aggregateResults: "collection_group",
           },
         },
-        type: "internal",
       },
       {
-        defineWidget: (selected) => {
-          return selected
+        id: Symbol(),
+        type: "internal",
+        title: "Layer Control",
+        layout: { x: 0, y: 8, w: 3, h: 4 },
+        widget: {
+          name: "EodashLayerControl",
+        },
+      },
+      {
+        defineWidget: (selectedSTAC) => {
+          return selectedSTAC
             ? {
-                id: "layercontrol",
-                layout: { x: 9, y: 8, w: 3, h: 4 },
-                title: "Layer Control",
-                type: "internal",
+                id: "Information",
+                title: "Information",
+                layout: { x: 9, y: 0, w: 3, h: 12 },
+                type: "web-component",
                 widget: {
-                  name: "EodashLayerControl",
+                  link: async () => await import("@eox/stacinfo"),
+                  properties: {
+                    for: currentUrl,
+                    allowHtml: "true",
+                    styleOverride: `.single-property {columns: 1!important;}
+                      h1 {margin:0px!important;font-size:16px!important;}
+                      header h1:after {
+                        content:' ';
+                        display:block;
+                        border:1px solid #d0d0d0;
+                      }
+                      h2 {font-size:15px}
+                      h3 {font-size:14px}
+                      summary {cursor: pointer;}
+                      #properties li > .value { font-weight: normal !important;}
+                      main {padding-bottom: 10px;}
+                      .footer-container {line-height:1;}
+                      .footer-container button {margin-top: -10px;}
+                      .footer-container small {font-size:10px;line-height:1;}`,
+                    header: '["title"]',
+                    tags: '["themes"]',
+                    subheader: "[]",
+                    properties: '["satellite","sensor","agency","extent"]',
+                    featured: '["description","providers","assets","links"]',
+                    footer: '["sci:citation"]',
+                  },
+                  tagName: "eox-stacinfo",
                 },
               }
             : null;
         },
       },
       {
-        id: "mapbtns",
-        layout: { x: 8, y: 0, w: 1, h: 2 },
-        title: "Map Buttons",
-        type: "internal",
-        widget: {
-          name: "EodashMapBtns",
+        defineWidget: (selectedSTAC) => {
+          return selectedSTAC
+            ? {
+                id: "Datepicker",
+                type: "internal",
+                layout: { x: 5, y: 10, w: 1, h: 1 },
+                title: "Datepicker",
+                widget: {
+                  name: "EodashDatePicker",
+                },
+              }
+            : null;
+        },
+      },
+      {
+        defineWidget: (selected) => {
+          return selected
+            ? {
+                id: "Buttons",
+                layout: { x: 8, y: 0, w: 1, h: 1 },
+                title: "Buttons",
+                type: "internal",
+                widget: {
+                  name: "EodashMapBtns",
+                },
+              }
+            : null;
         },
       },
     ],
