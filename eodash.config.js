@@ -1,16 +1,7 @@
-/** @type {import("@eodash/eodash").EodashCLiConfig} */
-export default {
-  base: "",
+import { defineConfig } from "@eodash/eodash/config";
+
+export default defineConfig({
   dev: {
-    port: 3001,
-    host: false,
-    open: false,
+    port: 3000,
   },
-  preview: {
-    port: 4173,
-    host: true,
-    open: true,
-  },
-  outDir: ".eodash/dist",
-  cacheDir: ".eodash/temp",
-};
+});
