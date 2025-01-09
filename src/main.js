@@ -11,9 +11,9 @@ export default createEodash({
     name: "Dashboard",
     font: {
       family: "Poppins",
-      link: new URL("./assets/poppins.css", import.meta.url).href,
+      link: new URL("/poppins.css", import.meta.url).href,
     },
-    logo: "/logo.png",
+    logo: new URL("/logo.png", import.meta.url).href,
     errorMessage:
       "something went wrong, please contact demo@email.com if the issue persists",
     footerText: "eodash instance template",
