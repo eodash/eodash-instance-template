@@ -11,5 +11,10 @@
     "moduleResolution": "node"
   },
   "exclude": ["node_modules", ".eodash", "public", "dist"],
-  "include": ["src/**/**.js", "src/**/**.vue", "src/**.d.ts"]
+  "include": [
+    "src/**/**.js",
+    "src/**/**.vue",
+    "src/**.d.ts",
+    "eodash.config.js"
+  ]
 }
