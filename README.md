@@ -49,13 +49,3 @@ Run linter:
 ```bash
 npm run lint
 ```
-
-## Folder Structure
-
-    .
-    ├── public            # statically served files
-    ├── src               # Client source code that hosts the microfrontends and renders the dashboard
-    │    ├── widgets      # Contains custom defined internal widgets
-    │    └─  main.js      # eodash main entry point
-    │
-    └── README.md
