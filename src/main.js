@@ -7,15 +7,23 @@ export default createEodash({
     id: "demo",
     stacEndpoint: "https://esa-eodashboards.github.io/eodashboard-catalog/trilateral/catalog.json",
     brand: {
-      name: "Demo",
+      name: "Dashboard",
+      font: {
+        family: "Poppins",
+        link: new URL("./assets/poppins.css", import.meta.url).href,
+      },
+      logo: "/logo.png",
+      errorMessage:
+        "something went wrong, please contact demo@email.com if the issue persists",
+      footerText: "eodash instance template",
       theme: {
         colors: {
-          primary: "#fff",
-          secondary: "#fff",
+          primary: "#004170",
+          secondary: "#004170",
+          background: "#fff",
           surface: "#fff",
         },
       },
-      footerText: "Demo configuration of eodash client",
     },
     templates: {
      light,
