@@ -1,5 +1,5 @@
 {
-  "name": "config-template",
+  "name": "eodash-instance-template",
   "version": "1.0.0",
   "description": "",
   "type": "module",
@@ -12,15 +12,15 @@
     "format": "prettier . --write"
   },
   "dependencies": {
-    "@eodash/eodash": "^5.0.0-rc.1.5"
+    "@eodash/eodash": "^5.0.0"
   },
   "author": "",
   "devDependencies": {
     "@eox/eslint-config": "^1.0.1",
     "@typescript-eslint/eslint-plugin": "^7.18.0",
     "@typescript-eslint/parser": "^7.18.0",
-    "eslint": "^8.57.0",
-    "eslint-plugin-vue": "^9.27.0",
-    "typescript": "^5.5.4"
+    "eslint": "^8.57.1",
+    "eslint-plugin-vue": "^9.33.0",
+    "typescript": "^5.8.3"
   }
 }
