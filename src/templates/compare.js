@@ -1,6 +1,6 @@
 import { mdiViewDashboardVariant } from "@mdi/js";
 
-/** @type {import("@eodash/eodash").SingleTemplate} */
+/** @type {import("@eodash/eodash").Template} */
 export default {
   gap: 16,
   loading: {
@@ -19,7 +19,7 @@ export default {
     },
   },
   background: {
-    id: Symbol(),
+    id: "background-map",
     type: "internal",
     widget: {
       name: "EodashMap",
@@ -51,7 +51,7 @@ export default {
     {
       id: Symbol(),
       type: "internal",
-      title: "Tools",
+      title: "Compare Tools",
       layout: { x: 9, y: 0, w: 3, h: 1 },
       widget: {
         name: "EodashTools",
@@ -115,9 +115,6 @@ export default {
               type: "internal",
               widget: {
                 name: "EodashMapBtns",
-                properties: {
-                  compareIndicators: false,
-                },
               },
             }
           : null;

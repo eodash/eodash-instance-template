@@ -1,6 +1,6 @@
 import { mdiViewDashboardVariant } from "@mdi/js";
 
-/** @type {import("@eodash/eodash").SingleTemplate} */
+/** @type {import("@eodash/eodash").Template} */
 export default {
   gap: 16,
   loading: {
@@ -19,7 +19,7 @@ export default {
     },
   },
   background: {
-    id: Symbol(),
+    id: "background-map",
     type: "internal",
     widget: {
       name: "EodashMap",

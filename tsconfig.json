@@ -15,6 +15,7 @@
     "src/**/**.js",
     "src/**/**.vue",
     "src/**.d.ts",
+    "src/**.ts",
     "eodash.config.js"
   ]
 }

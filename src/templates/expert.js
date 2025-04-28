@@ -1,6 +1,6 @@
 import { mdiViewDashboard } from "@mdi/js";
 
-/** @type {import("@eodash/eodash").SingleTemplate} */
+/** @type {import("@eodash/eodash").Template} */
 export default {
   gap: 16,
   loading: {
@@ -19,7 +19,7 @@ export default {
     },
   },
   background: {
-    id: Symbol(),
+    id: "background-map",
     type: "internal",
     widget: {
       name: "EodashMap",
@@ -92,6 +92,7 @@ export default {
                 properties: {
                   hintText: `<b>Hint:</b> closest available date is displayed <br />
                                 on map (see Analysis Layers)`,
+                  toggleCalendar: true,
                 },
               },
             }
